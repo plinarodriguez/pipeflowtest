@@ -1,0 +1,31 @@
+#!/bin/sh
+
+#curl -LO https://zenodo.org/record/7311316/files/pipe_meshes.tar.xz
+#tar -xvf pipe_meshes.tar.xz
+
+#mv pipe_meshes.tar.xz mesh_files/
+
+#cp -r case case32
+#cp -r case case64
+#cp -r case case16
+
+#mv pipe16.msh case16
+#mv pipe32.msh case32
+#mv pipe64.msh case64
+
+cd case16
+fluent3DMeshToFoam 16.msh
+icoFoam > run.log 2>&1
+foamToVTK
+#cd ..
+
+#cd case32
+#fluentMeshToFoam 32.msh
+#icoFoam > run.log 2>&1
+#foamToVTK
+#cd ..
+
+#cd case64
+#fluentMeshToFoam pipe64.msh
+#icoFoam > run.log 2>&1
+#foamToVTK
